@@ -1,15 +1,12 @@
 import dotenv from "dotenv";
 dotenv.config();
-import mongoose from "mongoose";
 import app from "./app";
+import connectDB from "./app/config/db";
 async function main() {
   try {
-    const uri = process.env.MONGO_URI as string;
+    await connectDB();
     const PORT = process.env.PORT || 4000;
-
-   await mongoose.connect(uri);
-    console.log("Db connected");
-     app.listen(PORT, () => {
+    app.listen(PORT, () => {
       console.log(`App is listing on port ${PORT}`);
     });
   } catch (error) {
@@ -20,4 +17,4 @@ async function main() {
 main();
 
 // Export the app for Vercel's serverless environment
-export default app
+export default app;

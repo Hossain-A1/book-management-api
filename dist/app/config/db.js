@@ -12,24 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
-const app_1 = __importDefault(require("./app"));
-const db_1 = __importDefault(require("./app/config/db"));
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield (0, db_1.default)();
-            const PORT = process.env.PORT || 4000;
-            app_1.default.listen(PORT, () => {
-                console.log(`App is listing on port ${PORT}`);
-            });
-        }
-        catch (error) {
-            console.log(error);
-        }
-    });
-}
-main();
-// Export the app for Vercel's serverless environment
-exports.default = app_1.default;
+const mongoose_1 = __importDefault(require("mongoose"));
+const connectDB = (...args_1) => __awaiter(void 0, [...args_1], void 0, function* (option = {}) {
+    try {
+        const uri = process.env.MONGO_URI;
+        yield mongoose_1.default.connect(uri, option);
+        console.log("Connection to DB is successfull established");
+        mongoose_1.default.connection.on("Error", (error) => {
+            console.log(`Db connection error ${error}`);
+        });
+    }
+    catch (error) {
+        console.log(`could not connect ${error}`);
+    }
+});
+exports.default = connectDB;

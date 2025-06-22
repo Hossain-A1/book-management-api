@@ -1,7 +1,7 @@
 // middleware/errorHandler.ts
 import { ErrorRequestHandler } from "express";
 
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   const statusCode = err.statusCode || 400;
 
   res.status(statusCode).json({
@@ -9,7 +9,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     success: false,
     error: err,
   });
-next()
 };
 
 
