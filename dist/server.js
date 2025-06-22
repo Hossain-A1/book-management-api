@@ -33,3 +33,5 @@ function main() {
     });
 }
 main();
+// Export the app for Vercel's serverless environment
+exports.default = app_1.default;
