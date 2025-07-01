@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const connectDB = async (option = {}) => {
+// const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+const connectDB = async () => {
   try {
     const uri = process.env.MONGO_URI as string;
-
-    await mongoose.connect(uri, option);
+    await mongoose.connect(uri);
     console.log("Connection to DB is successfull established");
 
     mongoose.connection.on("Error", (error) => {

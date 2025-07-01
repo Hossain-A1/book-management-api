@@ -1,4 +1,3 @@
-
 export interface IBook {
   title: string;
   author: string;
@@ -14,6 +13,3 @@ export interface IBook {
   copies: number;
   available?: boolean;
 }
-
-
-

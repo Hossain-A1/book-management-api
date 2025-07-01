@@ -113,6 +113,13 @@ const handleUpdateBook = async (
 ): Promise<void> => {
   try {
     const { copies } = req.body;
+    if (copies < 1) {
+      errorResponse(res, {
+        statusCode: 400,
+        message: "Please provide a positive copies number",
+      });
+      return;
+    }
     const { bookId } = req.params;
     isMongooseObjectId(res, bookId);
 
