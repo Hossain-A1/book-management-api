@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 const connectDB = async () => {
   try {
     const uri = process.env.MONGO_URI as string;
