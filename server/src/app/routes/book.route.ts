@@ -8,7 +8,7 @@ import {
 } from "../controllers/book.controller";
 
 const book_router = express.Router();
-
+//book router
 book_router.post("/", handleCreateBook);
 book_router.put("/edit-book/:id", handleUpdateBook);
 book_router.delete("/:id", handleDeleteBook);
