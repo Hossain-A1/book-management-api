@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const book_controller_1 = require("../controllers/book.controller");
 const book_router = express_1.default.Router();
+//book router
 book_router.post("/", book_controller_1.handleCreateBook);
 book_router.put("/edit-book/:id", book_controller_1.handleUpdateBook);
 book_router.delete("/:id", book_controller_1.handleDeleteBook);
